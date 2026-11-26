@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCAS E-Portfolio | นายศุภกร หอมดอกพลอย</title>
+    
+    <!-- Google Fonts: Prompt -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* ================= VARIABLES & RESET (โทนสีน้ำเงิน-ฟ้าตามต้นฉบับ) ================= */
+        :root {
+            --primary: #1E3A8A;       /* น้ำเงินกรมท่าเข้ม */
+            --primary-dark: #172554;  /* กรมท่ามืด */
+            --primary-light: #DBEAFE; /* ฟ้าอ่อนพาสเทล */
+            --accent: #3B82F6;        /* ฟ้าสว่าง */
+            --bg-main: #FFFFFF;       /* พื้นหลังขาว */
+            --bg-alt: #F0F5FA;        /* พื้นหลังฟ้าเทาอ่อนตามแบบพอร์ต */
+            --text-dark: #0F172A;     /* ตัวอักษรเข้ม */
+            --text-muted: #475569;    /* ตัวอักษรรอง */
+            --border-color: #CBD5E1;  /* สีเส้นขอบ */
+            --shadow-sm: 0 4px 6px -1px rgba(30, 58, 138, 0.08);
+            --shadow-md: 0 10px 25px -5px rgba(30, 58, 138, 0.15);
+            --radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Prompt', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ================= NAVIGATION BAR ================= */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 76px;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            background: var(--primary);
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 26px;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .btn-pdf-nav {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #fff !important;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 500;
+            box-shadow: var(--shadow-sm);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-pdf-nav::after {
+            display: none !important;
+        }
+
+        .btn-pdf-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* ================= 1. หน้าแรก (HERO SECTION) ================= */
+        .hero {
+            padding: 140px 0 90px;
+            background: radial-gradient(circle at top right, #DBEAFE 0%, #FFFFFF 58%);
+            position: relative;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .badge-tcas {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid #BFDBFE;
+        }
+
+        .hero h1 {
+            font-size: 2.75rem;
+            font-weight: 700;
+            line-height: 1.25;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+            max-width: 580px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 36px;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #fff;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 30px -5px rgba(30, 58, 138, 0.35);
+        }
+
+        .btn-outline {
+            background: #fff;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 28px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-color);
+            flex-wrap: wrap;
+        }
+
+        .stat-item h3 {
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-item p {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-card {
+            background: #fff;
+            padding: 16px;
+            border-radius: 28px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            position: relative;
+            max-width: 360px;
+            width: 100%;
+        }
+
+        .profile-img-placeholder {
+            width: 100%;
+            aspect-ratio: 4/5;
+            border-radius: 20px;
+            background: linear-gradient(145deg, #BFDBFE, #93C5FD);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-dark);
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .profile-img-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .floating-tag {
+            position: absolute;
+            bottom: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid #BFDBFE;
+            white-space: nowrap;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* ================= SECTION COMMON STYLES ================= */
+        section {
+            padding: 90px 0;
+        }
+
+        .bg-alt {
+            background-color: var(--bg-alt);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 56px;
+        }
+
+        .section-tag {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .section-header h2 {
+            font-size: 2.15rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* ================= 2. ประวัติการศึกษา & STATEMENT OF PURPOSE ================= */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.95fr 1.05fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        .info-box {
+            background: #fff;
+            padding: 32px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .info-box:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .info-box-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .icon-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--primary-light);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .info-box-header h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        /* Timeline ประวัติการศึกษา */
+        .edu-timeline {
+            position: relative;
+            padding-left: 24px;
+            border-left: 2px solid #93C5FD;
+            margin-left: 10px;
+        }
+
+        .edu-item {
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .edu-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .edu-item::before {
+            content: '';
+            position: absolute;
+            left: -31px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 2px var(--accent);
+        }
+
+        .edu-level {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1.05rem;
+        }
+
+        .edu-school {
+            font-weight: 500;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .edu-year {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            font-size: 0.8rem;
+            padding: 2px 10px;
+            border-radius: 50px;
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        /* Statement of Purpose Box */
+        .goal-card {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: #fff;
+            padding: 22px 24px;
+            border-radius: 14px;
+            margin-bottom: 20px;
+        }
+
+        .goal-card h4 {
+            font-size: 0.85rem;
+            opacity: 0.85;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .goal-card p {
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .sop-text p {
+            font-size: 0.94rem;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+            text-indent: 2em;
+            line-height: 1.75;
+        }
+
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .skill-tag {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.84rem;
+            font-weight: 500;
+        }
+
+        /* ================= CARDS GRID (กิจกรรม และ เกียรติบัตร) ================= */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 28px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            border-color: #93C5FD;
+        }
+
+        .card-thumb {
+            height: 185px;
+            background: linear-gradient(135deg, #DBEAFE, #BFDBFE);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .card-thumb i {
+            font-size: 3.5rem;
+            color: var(--primary);
+            opacity: 0.85;
+            transition: var(--transition);
+        }
+
+        .card:hover .card-thumb i {
+            transform: scale(1.1);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .card-body {
+            padding: 24px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-date {
+            font-size: 0.82rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .card-title {
+            font-size: 1.12rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        .card-desc {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 1px solid #E2E8F0;
+        }
+
+        .btn-detail {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-detail:hover {
+            color: var(--accent);
+            gap: 10px;
+        }
+
+        /* ================= CTA BANNER ================= */
+        .cta-section {
+            padding: 60px 0;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 55%, var(--accent) 100%);
+            border-radius: 24px;
+            padding: 48px;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .cta-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .cta-content p {
+            opacity: 0.9;
+            max-width: 560px;
+        }
+
+        .btn-white {
+            background: #fff;
+            color: var(--primary-dark);
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            white-space: nowrap;
+            transition: var(--transition);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            background: #F0F5FA;
+        }
+
+        /* ================= FOOTER ================= */
+        footer {
+            background: #0F172A;
+            color: #E2E8F0;
+            padding: 64px 0 28px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-brand h3 {
+            font-size: 1.35rem;
+            color: #fff;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-brand p {
+            font-size: 0.92rem;
+            color: #CBD5E1;
+            max-width: 360px;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            font-size: 1.05rem;
+            margin-bottom: 18px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+            font-size: 0.92rem;
+            color: #CBD5E1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: #93C5FD;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 24px;
+            font-size: 0.85rem;
+            color: #94A3B8;
+        }
+
+        /* ================= MODAL POPUP ================= */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.72);
+            backdrop-filter: blur(4px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-box {
+            background: #fff;
+            max-width: 580px;
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.show .modal-box {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #fff;
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .modal-close {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-body {
+            padding: 24px;
+        }
+
+        .modal-meta {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: 0.85rem;
+        }
+
+        .modal-meta span {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-weight: 500;
+        }
+
+        .modal-body p {
+            color: var(--text-muted);
+            font-size: 0.94rem;
+            margin-bottom: 20px;
+            line-height: 1.75;
+        }
+
+        .modal-cert-preview {
+            background: var(--bg-alt);
+            border: 2px dashed #93C5FD;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+
+        /* ================= RESPONSIVE DESIGN ================= */
+        @media (max-width: 968px) {
+            .hero-grid,
+            .about-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-top: 115px;
+                text-align: center;
+            }
+
+            .hero-subtitle {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons,
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .cta-box {
+                flex-direction: column;
+                text-align: center;
+                padding: 36px 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 76px;
+                left: -100%;
+                width: 100%;
+                background: #fff;
+                flex-direction: column;
+                padding: 28px 24px;
+                gap: 20px;
+                border-bottom: 1px solid var(--border-color);
+                box-shadow: var(--shadow-md);
+                transition: 0.3s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hero h1 {
+                font-size: 2.1rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================= HEADER & NAVBAR ================= -->
+    <header>
+        <div class="container navbar">
+            <a href="#home" class="logo">
+                <span>TCAS</span> E-Portfolio
+            </a>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="เปิดเมนู">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-item active">หน้าแรก</a></li>
+                <li><a href="#about" class="nav-item">ประวัติ & เป้าหมาย</a></li>
+                <li><a href="#activities" class="nav-item">กิจกรรม (Activities)</a></li>
+                <li><a href="#certificates" class="nav-item">เกียรติบัตร (Certificates)</a></li>
+                <li>
+                    <!-- ใส่ลิงก์ Google Drive หรือไฟล์ PDF ฉบับเต็มของคุณตรง href -->
+                    <a href="https://drive.google.com/" target="_blank" rel="noopener" class="btn-pdf-nav">
+                        <i class="fa-solid fa-file-pdf"></i> แฟ้มสะสมผลงาน (PDF)
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- ================= 1. หน้าแรก (HERO SECTION) ================= -->
+    <section id="home" class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="badge-tcas">
+                    <i class="fa-solid fa-graduation-cap"></i> แฟ้มสะสมผลงานออนไลน์ • TCAS Portfolio
+                </div>
+                <h1>สวัสดีครับ ผม<br><span>นายศุภกร หอมดอกพลอย</span></h1>
+                <p class="hero-subtitle">
+                    นักเรียนระดับชั้นมัธยมศึกษาตอนปลาย โรงเรียนธัญรัตน์ จังหวัดปทุมธานี 
+                    มีความมุ่งมั่นและตั้งใจศึกษาต่อใน <strong>คณะบริหารธุรกิจ สาขาการจัดการ มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตบางเขน</strong>
+                </p>
+                
+                <div class="hero-buttons">
+                    <a href="https://drive.google.com/" target="_blank" rel="noopener" class="btn btn-primary">
+                        <i class="fa-brands fa-google-drive"></i> เปิดดู Portfolio ฉบับเต็ม (Drive)
+                    </a>
+                    <a href="#about" class="btn btn-outline">
+                        <i class="fa-solid fa-user"></i> อ่าน Statement of Purpose
+                    </a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>ม.เกษตรศาสตร์</h3>
+                        <p>วิทยาเขตบางเขน (เป้าหมาย)</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>บริหารธุรกิจ</h3>
+                        <p>สาขาการจัดการ</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>รร.ธัญรัตน์</h3>
+                        <p>จังหวัดปทุมธานี</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-image-wrapper">
+                <div class="profile-card">
+                    <div class="profile-img-placeholder">
+                        <!-- หากต้องการใส่รูปถ่ายจริง ให้ลบบรรทัดไอคอนด้านล่างแล้วใช้ <img src="รูปของคุณ.jpg" alt="นายศุภกร หอมดอกพลอย"> -->
+                        <i class="fa-solid fa-user-tie" style="font-size: 5.5rem; margin-bottom: 12px;"></i>
+                        <span style="font-weight: 600; font-size: 1rem;">นายศุภกร หอมดอกพลอย</span>
+                        <span style="font-size: 0.82rem; opacity: 0.85;">ใส่ไฟล์รูปภาพโปรไฟล์ชุดนักเรียนของคุณที่นี่</span>
+                    </div>
+                    <div class="floating-tag">
+                        <i class="fa-solid fa-briefcase"></i> คณะบริหารธุรกิจ สาขาการจัดการ
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 2. ประวัติการศึกษา & STATEMENT OF PURPOSE ================= -->
+    <section id="about" class="bg-alt">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Education & Statement of Purpose</span>
+                <h2>ประวัติการศึกษาและเหตุผลในการเลือกศึกษาต่อ</h2>
+                <p>เส้นทางการเรียนรู้และการค้นพบความถนัดด้านการวางแผน การทำงานเป็นทีม และการบริหารจัดการ</p>
+            </div>
+
+            <div class="about-grid">
+                <!-- กล่องประวัติการศึกษา (ดึงข้อมูลตรงตามภาพหน้าประวัติการศึกษา) -->
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon-circle"><i class="fa-solid fa-school"></i></div>
+                        <h3>ประวัติการศึกษา</h3>
+                    </div>
+
+                    <div class="edu-timeline">
+                        <div class="edu-item">
+                            <div class="edu-level">ระดับชั้นมัธยมศึกษาตอนปลาย</div>
+                            <div class="edu-school">โรงเรียนธัญรัตน์ จังหวัดปทุมธานี</div>
+                            <span class="edu-year">ปีการศึกษา 2567 – ปัจจุบัน</span>
+                        </div>
+
+                        <div class="edu-item">
+                            <div class="edu-level">ระดับชั้นมัธยมศึกษาตอนต้น</div>
+                            <div class="edu-school">โรงเรียนธัญรัตน์ จังหวัดปทุมธานี</div>
+                            <span class="edu-year">ปีการศึกษา 2564 – 2566</span>
+                        </div>
+
+                        <div class="edu-item">
+                            <div class="edu-level">ระดับชั้นประถมศึกษา</div>
+                            <div class="edu-school">โรงเรียนชุมชนวัดบางไผ่ จังหวัดนนทบุรี</div>
+                            <span class="edu-year">ปีการศึกษา 2558 – 2563</span>
+                        </div>
+                    </div>
+
+                    <hr style="border: none; border-top: 1px dashed var(--border-color); margin: 24px 0;">
+
+                    <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--primary-dark);">ทักษะและจุดแข็งสำคัญ:</h4>
+                    <div class="skills-tags">
+                        <span class="skill-tag">การวางแผนและจัดตารางงาน</span>
+                        <span class="skill-tag">ภาวะผู้นำ (รองหัวหน้าพาร์ท Percussion)</span>
+                        <span class="skill-tag">การทำงานเป็นทีม</span>
+                        <span class="skill-tag">การแก้ปัญหาเฉพาะหน้า</span>
+                        <span class="skill-tag">พื้นฐานภูมิศาสตร์และโลจิสติกส์</span>
+                    </div>
+                </div>
+
+                <!-- กล่อง Statement of Purpose (เรียบเรียงจากเรียงความในภาพหน้าแรก) -->
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="icon-circle"><i class="fa-solid fa-bullseye"></i></div>
+                        <h3>Statement of Purpose</h3>
+                    </div>
+
+                    <div class="goal-card">
+                        <h4>คณะและมหาวิทยาลัยเป้าหมาย</h4>
+                        <p>คณะบริหารธุรกิจ สาขาการจัดการ<br>มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตบางเขน</p>
+                    </div>
+
+                    <div class="sop-text">
+                        <p>
+                            ตอนเป็นเด็ก ผมเป็นคนที่ไม่ได้มีเป้าหมายที่ชัดเจนและไม่รู้ว่าโตขึ้นอยากจะเป็นอะไร จึงได้ลองทำสิ่งใหม่ๆ มาเรื่อยๆ จนได้ค้นพบว่าทุกครั้งที่ได้ทำงานร่วมกันเป็นทีม ได้คิดไอเดียใหม่ๆ และได้จัดตารางวางแผนงานกลุ่ม ผมรู้สึกสนุกและมีความสุขกับการได้บริหารจัดการสิ่งเหล่านั้น จึงตัดสินใจเลือกศึกษาต่อในคณะบริหารธุรกิจ สาขาการจัดการ
+                        </p>
+                        <p>
+                            ประสบการณ์สำคัญที่หล่อหลอมทักษะของผมคือการทำกิจกรรมกลุ่มในห้องเรียน ค่าย Workshop และโดยเฉพาะบทบาท <strong>รองหัวหน้าพาร์ท Percussion ในวงโยธวาทิต</strong> ซึ่งต้องดูแลและกำกับรุ่นน้องในพาร์ท ทำให้ผมได้ฝึกทักษะการสื่อสาร การทำงานเป็นทีม การวางแผนให้บรรลุเป้าหมาย และการแก้ไขปัญหาเฉพาะหน้าเมื่อสถานการณ์ไม่เป็นไปตามแผนที่วางไว้
+                        </p>
+                        <p>
+                            ผมเล็งเห็นว่า <strong>คณะบริหารธุรกิจ สาขาการจัดการ มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตบางเขน</strong> มีหลักสูตรเชิงทฤษฎีที่เข้มข้นควบคู่กับการฝึกประสบการณ์หน้างานจริง อีกทั้งมีสภาพแวดล้อมที่เอื้อต่อการเรียนรู้ ผมเชื่อมั่นว่าสาขาการจัดการที่นี่จะเป็นก้าวสำคัญที่ช่วยให้ผมพัฒนาศักยภาพและความอดทน เพื่อก้าวไปสู่ความสำเร็จอย่างไม่หยุดยั้ง
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 3. กิจกรรม (ACTIVITIES) ================= -->
+    <section id="activities">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Activities & Experiences</span>
+                <h2>กิจกรรมและประสบการณ์ (Activities)</h2>
+                <p>ประสบการณ์การฝึกฝนระเบียบวินัย การทำงานร่วมกับผู้อื่น และการเรียนรู้เชิงวิชาการนอกห้องเรียน</p>
+            </div>
+
+            <div class="cards-grid">
+                <!-- กิจกรรมที่ 1: วงโยธวาทิต -->
+                <div class="card">
+                    <div class="card-thumb">
+                        <span class="card-badge">ภาวะผู้นำ & ทีมเวิร์ค</span>
+                        <i class="fa-solid fa-drum"></i>
+                    </div>
+                    <div class="card-body">
+                        <span class="card-date">รองหัวหน้าพาร์ท Percussion</span>
+                        <h3 class="card-title">การแสดงโชว์ของวงโยธวาทิตโรงเรียนธัญรัตน์</h3>
+                        <p class="card-desc">เรียนรู้ความพร้อมเพรียง ความสามัคคี ระเบียบวินัย และการกำกับดูแลรุ่นน้องในพาร์ท Percussion</p>
+                        <div class="card-footer">
+                            <button class="btn-detail" onclick="openModal(
+                                'การแสดงโชว์ของวงโยธวาทิต (รองหัวหน้าพาร์ท Percussion)',
+                                'กิจกรรมดนตรีและภาวะผู้นำ • โรงเรียนธัญรัตน์',
+                                'บทบาทหน้าที่: รองหัวหน้าพาร์ท Percussion\nสิ่งที่ได้เรียนรู้: การแสดงวงโยธวาทิตต้องอาศัยความพร้อมเพรียง ความสามัคคี และระเบียบวินัยเป็นสำคัญ ช่วงเวลาฝึกซ้อมที่เข้มข้นทำให้ผมได้เรียนรู้การเล่นดนตรีและการทำงานเป็นทีมอย่างจริงจัง ได้ฝึกการวางแผน การสื่อสารกับรุ่นน้อง และการแก้ไขปัญหาเฉพาะหน้า ซึ่งสามารถนำไปปรับใช้ในการเรียนและการบริหารจัดการทีมในอนาคตได้เป็นอย่างดี',
+                                'https://drive.google.com/'
+                            )">
+                                อ่านรายละเอียดเพิ่มเติม <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- กิจกรรมที่ 2: สอบคัดเลือก สอวน. ภูมิศาสตร์ -->
+                <div class="card">
+                    <div class="card-thumb">
+                        <span class="card-badge">วิชาการ สอวน.</span>
+                        <i class="fa-solid fa-earth-asia"></i>
+                    </div>
+                    <div class="card-body">
+                        <span class="card-date">การสอบคัดเลือกโอลิมปิกวิชาการ</span>
+                        <h3 class="card-title">การสอบคัดเลือกเข้าค่าย สอวน. สาขาภูมิศาสตร์</h3>
+                        <p class="card-desc">ศึกษาเชิงลึกด้านลักษณะภูมิประเทศ เศรษฐกิจโลก การตลาด และการประยุกต์ใช้กับงานโลจิสติกส์</p>
+                        <div class="card-footer">
+                            <button class="btn-detail" onclick="openModal(
+                                'การสอบคัดเลือกเข้าค่าย สอวน. สาขาภูมิศาสตร์',
+                                'กิจกรรมทางวิชาการ • คณะสังคมศาสตร์',
+                                'สิ่งที่ได้เรียนรู้: การเตรียมตัวสอบครั้งนี้ทำให้ผมได้อ่านและศึกษาเกี่ยวกับลักษณะภูมิประเทศ เศรษฐกิจโลก การตลาด และความสัมพันธ์ระหว่างพื้นที่กับความต้องการของมนุษย์ ซึ่งเป็นความรู้พื้นฐานสำคัญที่สามารถนำไปต่อยอดในการเรียนด้านโลจิสติกส์ การจัดการการขนส่ง การวางแผนคลังสินค้า และการเลือกทำเลที่ตั้งทางธุรกิจในอนาคต',
+                                'https://drive.google.com/'
+                            )">
+                                อ่านรายละเอียดเพิ่มเติม <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- กิจกรรมที่ 3: แข่งขันความเป็นเลิศด้านภูมิศาสตร์ -->
+                <div class="card">
+                    <div class="card-thumb">
+                        <span class="card-badge">การแข่งขันวิชาการ</span>
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </div>
+                    <div class="card-body">
+                        <span class="card-date">การแข่งขันระดับโรงเรียน</span>
+                        <h3 class="card-title">การแข่งขันความเป็นเลิศด้านภูมิศาสตร์ของโรงเรียน</h3>
+                        <p class="card-desc">ฝึกทักษะการใช้เครื่องมือทางภูมิศาสตร์ การคำนวณแผนที่ และการทบทวนข้อผิดพลาดเพื่อพัฒนาตนเอง</p>
+                        <div class="card-footer">
+                            <button class="btn-detail" onclick="openModal(
+                                'การแข่งขันความเป็นเลิศด้านภูมิศาสตร์ของโรงเรียน',
+                                'การแข่งขันทักษะทางวิชาการ • โรงเรียนธัญรัตน์',
+                                'สิ่งที่ได้เรียนรู้: การแข่งขันเน้นเรื่องการใช้เครื่องมือทางภูมิศาสตร์และการคำนวณแผนที่ หลังการแข่งขันผมได้นำข้อที่ทำผิดพลาดมาสืบค้นข้อมูลเพิ่มเติม ทำให้เข้าใจหลักการอ่านแผนที่และเครื่องมือดาวเทียมอย่างถ่องแท้มากขึ้น ซึ่งเป็นทักษะที่เป็นประโยชน์ต่อการวางแผนเส้นทางและการจัดการขนส่งในสายงานบริหารธุรกิจ',
+                                'https://drive.google.com/'
+                            )">
+                                อ่านรายละเอียดเพิ่มเติม <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 4. เกียรติบัตร (CERTIFICATES) ================= -->
+    <section id="certificates" class="bg-alt">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Certificates & Awards</span>
+                <h2>เกียรติบัตรและรางวัลความภาคภูมิใจ</h2>
+                <p>เอกสารรับรองการเข้าร่วมกิจกรรมและการได้รับรางวัลทางวิชาการจากโรงเรียนธัญรัตน์</p>
+            </div>
+
+            <div class="cards-grid">
+                <!-- เกียรติบัตรที่ 1 -->
+                <div class="card">
+                    <div class="card-thumb">
+                        <span class="card-badge">รางวัลชนะเลิศ</span>
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <div class="card-body">
+                        <span class="card-date">วันที่ 3 กรกฎาคม พ.ศ. 2569 • เลขที่ ธธ.2569/3705</span>
+                        <h3 class="card-title">รางวัลชนะเลิศ การแข่งขันตอบปัญหาทางวิชาการด้านภูมิศาสตร์</h3>
+                        <p class="card-desc">ระดับมัธยมศึกษาตอนปลาย ประจำปีการศึกษา 2569 กลุ่มสาระการเรียนรู้สังคมศึกษา ศาสนา และวัฒนธรรม โรงเรียนธัญรัตน์</p>
+                        <div class="card-footer">
+                            <button class="btn-detail" onclick="openModal(
+                                'เกียรติบัตรรางวัลชนะเลิศ การแข่งขันตอบปัญหาทางวิชาการด้านภูมิศาสตร์',
+                                'เลขที่ ธธ.2569/3705 • วันที่ 3 กรกฎาคม พ.ศ. 2569',
+                                'ผู้ได้รับรางวัล: นายศุภกร หอมดอกพลอย\nหน่วยงานที่มอบ: กลุ่มสาระการเรียนรู้สังคมศึกษา ศาสนา และวัฒนธรรม โรงเรียนธัญรัตน์ จังหวัดปทุมธานี สำนักงานเขตพื้นที่การศึกษามัธยมศึกษาปทุมธานี\nรายละเอียด: ได้รับรางวัลชนะเลิศ การแข่งขันตอบปัญหาทางวิชาการด้านภูมิศาสตร์ ระดับมัธยมศึกษาตอนปลาย ประจำปีการศึกษา 2569',
+                                'https://drive.google.com/'
+                            )">
+                                ดูรายละเอียดเกียรติบัตร <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- เกียรติบัตรที่ 2 -->
+                <div class="card">
+                    <div class="card-thumb">
+                        <span class="card-badge">กิจกรรมชุมนุม</span>
+                        <i class="fa-solid fa-certificate"></i>
+                    </div>
+                    <div class="card-body">
+                        <span class="card-date">วันที่ 25 มกราคม พ.ศ. 2568 • เลขที่ TR67-0055</span>
+                        <h3 class="card-title">ค่ายส่งเสริมศักยภาพนักเรียนกิจกรรมชุมนุม</h3>
+                        <p class="card-desc">ตามโครงการส่งเสริมผู้เรียนด้านกิจกรรมพัฒนาผู้เรียนให้มีคุณภาพ ประจำปีการศึกษา 2567 โรงเรียนธัญรัตน์</p>
+                        <div class="card-footer">
+                            <button class="btn-detail" onclick="openModal(
+                                'เกียรติบัตรผ่านการเข้าร่วมค่ายส่งเสริมศักยภาพนักเรียนกิจกรรมชุมนุม',
+                                'เลขที่ TR67-0055 • วันที่ 25 มกราคม พ.ศ. 2568',
+                                'ผู้ได้รับเกียรติบัตร: นายศุภกร หอมดอกพลอย\nหน่วยงานที่มอบ: โรงเรียนธัญรัตน์ สำนักงานเขตพื้นที่การศึกษามัธยมศึกษาปทุมธานี\nรายละเอียด: ได้ผ่านการเข้าร่วมกิจกรรมค่ายส่งเสริมศักยภาพนักเรียนกิจกรรมชุมนุม ตามโครงการส่งเสริมผู้เรียนด้านกิจกรรมพัฒนาผู้เรียนให้มีคุณภาพ เป็นไปตามหลักสูตรสถานศึกษาและมีศักยภาพเทียบเคียงมาตรฐานสากล ประจำปีการศึกษา 2567',
+                                'https://drive.google.com/'
+                            )">
+                                ดูรายละเอียดเกียรติบัตร <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CTA BANNER ================= -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <div class="cta-content">
+                    <h2>แฟ้มสะสมผลงานฉบับเต็ม (PDF / Google Drive)</h2>
+                    <p>สามารถเปิดดูและดาวน์โหลดไฟล์ Portfolio ฉบับสมบูรณ์ของนายศุภกร หอมดอกพลอย พร้อมหลักฐานประกอบการพิจารณาเพิ่มเติมได้ทันที</p>
+                </div>
+                <a href="https://drive.google.com/" target="_blank" rel="noopener" class="btn-white">
+                    <i class="fa-solid fa-file-arrow-down"></i> เปิดไฟล์ Portfolio PDF
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3><i class="fa-solid fa-graduation-cap" style="color: #93C5FD;"></i> นายศุภกร หอมดอกพลอย</h3>
+                    <p>เว็บไซต์ E-Portfolio จัดทำขึ้นเพื่อประกอบการพิจารณาคัดเลือกเข้าศึกษาต่อคณะบริหารธุรกิจ สาขาการจัดการ มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตบางเขน</p>
+                    <div class="social-links">
+                        <a href="https://drive.google.com/" target="_blank" rel="noopener" aria-label="Google Drive"><i class="fa-brands fa-google-drive"></i></a>
+                        <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="mailto:supakorn.portfolio@example.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>เมนูนำทาง</h4>
+                    <ul>
+                        <li><a href="#home">หน้าแรก</a></li>
+                        <li><a href="#about">ประวัติการศึกษา & SOP</a></li>
+                        <li><a href="#activities">กิจกรรม (Activities)</a></li>
+                        <li><a href="#certificates">เกียรติบัตร (Certificates)</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>ข้อมูลติดต่อ (แก้ไขเป็นข้อมูลจริงของคุณ)</h4>
+                    <ul>
+                        <li><i class="fa-solid fa-envelope" style="color: #93C5FD;"></i> supakorn.portfolio@example.com</li>
+                        <li><i class="fa-solid fa-phone" style="color: #93C5FD;"></i> 08X-XXX-XXXX</li>
+                        <li><i class="fa-solid fa-school" style="color: #93C5FD;"></i> โรงเรียนธัญรัตน์ จ.ปทุมธานี</li>
+                        <li><i class="fa-solid fa-building-columns" style="color: #93C5FD;"></i> คณะบริหารธุรกิจ ม.เกษตรศาสตร์</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 E-Portfolio นายศุภกร หอมดอกพลอย • โรงเรียนธัญรัตน์ จังหวัดปทุมธานี</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= MODAL POPUP ================= -->
+    <div class="modal-overlay" id="detailModal" onclick="closeModalOnBg(event)">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3 id="modalTitle">ชื่อผลงาน</h3>
+                <button class="modal-close" onclick="closeModal()" aria-label="ปิดหน้าต่าง">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-meta">
+                    <span id="modalSubtitle">รายละเอียด</span>
+                </div>
+                <p id="modalDesc" style="white-space: pre-line;"></p>
+                
+                <div class="modal-cert-preview">
+                    <i class="fa-solid fa-award" style="font-size: 2.3rem; margin-bottom: 8px; display: block;"></i>
+                    <strong>หลักฐานภาพถ่าย / เกียรติบัตรฉบับจริง</strong>
+                    <p style="font-size: 0.85rem; margin-bottom: 0; margin-top: 4px;">คลิกปุ่มด้านล่างเพื่อเปิดดูไฟล์หลักฐานบน Google Drive</p>
+                </div>
+
+                <div class="modal-actions">
+                    <button class="btn btn-outline" style="padding: 10px 20px; font-size: 0.9rem;" onclick="closeModal()">ปิดหน้าต่าง</button>
+                    <a id="modalLink" href="#" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.9rem;">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> เปิดดูไฟล์หลักฐาน
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= JAVASCRIPT ================= -->
+    <script>
+        // เปิด/ปิด เมนูบนโทรศัพท์มือถือ
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        });
+
+        document.querySelectorAll('.nav-item').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-xmark');
+            });
+        });
+
+        // ไฮไลต์เมนูนำทางอัตโนมัติเมื่อเลื่อนหน้าจอ
+        const sections = document.querySelectorAll('section[id]');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 130;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // เปิด/ปิดหน้าต่าง Modal แสดงรายละเอียด
+        const modal = document.getElementById('detailModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalSubtitle = document.getElementById('modalSubtitle');
+        const modalDesc = document.getElementById('modalDesc');
+        const modalLink = document.getElementById('modalLink');
+
+        function openModal(title, subtitle, desc, link) {
+            modalTitle.textContent = title;
+            modalSubtitle.textContent = subtitle;
+            modalDesc.textContent = desc;
+            modalLink.href = link;
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        function closeModalOnBg(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('show')) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
